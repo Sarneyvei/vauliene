@@ -1,0 +1,183 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Galaxy Online IV — sistema de design "centro de comando espacial".
+ * Todas as cores em oklch e expostas como tokens semânticos.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-panel: var(--panel);
+  --color-panel-foreground: var(--panel-foreground);
+  --color-hologram: var(--hologram);
+  --color-metal: var(--metal);
+  --color-crystal: var(--crystal);
+  --color-gas: var(--gas);
+  --color-energy: var(--energy);
+  --font-display: "Orbitron", "Segoe UI", sans-serif;
+  --font-sans: "Rajdhani", "Segoe UI", sans-serif;
+  --shadow-glow: 0 0 24px oklch(0.72 0.15 220 / 0.35);
+  --shadow-panel: 0 18px 50px oklch(0.1 0.05 250 / 0.55);
+}
+
+:root {
+  --radius: 0.35rem;
+  --background: oklch(0.16 0.035 260);
+  --foreground: oklch(0.94 0.02 230);
+  --card: oklch(0.21 0.04 258);
+  --card-foreground: oklch(0.94 0.02 230);
+  --popover: oklch(0.19 0.04 258);
+  --popover-foreground: oklch(0.94 0.02 230);
+  --primary: oklch(0.75 0.16 218);
+  --primary-foreground: oklch(0.16 0.04 260);
+  --secondary: oklch(0.28 0.05 262);
+  --secondary-foreground: oklch(0.93 0.02 230);
+  --muted: oklch(0.26 0.04 262);
+  --muted-foreground: oklch(0.72 0.03 240);
+  --accent: oklch(0.72 0.18 320);
+  --accent-foreground: oklch(0.16 0.04 260);
+  --destructive: oklch(0.62 0.21 22);
+  --destructive-foreground: oklch(0.97 0.01 230);
+  --success: oklch(0.75 0.17 158);
+  --warning: oklch(0.82 0.16 85);
+  --border: oklch(0.42 0.06 245 / 0.45);
+  --input: oklch(0.3 0.05 260);
+  --ring: oklch(0.75 0.16 218);
+  --panel: oklch(0.19 0.04 258 / 0.82);
+  --panel-foreground: oklch(0.94 0.02 230);
+  --hologram: oklch(0.82 0.14 200);
+  --metal: oklch(0.8 0.03 240);
+  --crystal: oklch(0.83 0.13 210);
+  --gas: oklch(0.83 0.15 160);
+  --energy: oklch(0.85 0.15 88);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    background-image:
+      radial-gradient(circle at 15% 10%, oklch(0.32 0.1 265 / 0.55), transparent 45%),
+      radial-gradient(circle at 85% 5%, oklch(0.3 0.12 320 / 0.4), transparent 40%),
+      radial-gradient(circle at 50% 100%, oklch(0.26 0.09 200 / 0.45), transparent 55%);
+    background-attachment: fixed;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: var(--font-display);
+    letter-spacing: 0.06em;
+  }
+}
+
+@utility panel {
+  background: var(--panel);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-panel);
+}
+
+@utility panel-glow {
+  background: var(--panel);
+  border: 1px solid oklch(0.75 0.16 218 / 0.4);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-glow);
+}
+
+@utility holo-title {
+  font-family: var(--font-display);
+  background: linear-gradient(
+    100deg,
+    oklch(0.9 0.09 200),
+    oklch(0.82 0.16 218),
+    oklch(0.78 0.18 320)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 0.12em;
+}
+
+@utility grid-floor {
+  background-image:
+    linear-gradient(oklch(0.75 0.16 218 / 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.75 0.16 218 / 0.12) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+@utility scan-line {
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes go4-scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(400%);
+  }
+}
+
+@keyframes go4-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-go4-scan {
+  animation: go4-scan 4.5s linear infinite;
+}
+
+.animate-go4-pulse {
+  animation: go4-pulse 2.4s ease-in-out infinite;
+}
+
+/* Barra de rolagem discreta em painéis */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: oklch(0.5 0.08 240) transparent;
+}
