@@ -1,86 +1,127 @@
-Aqui está uma versão reestruturada, mais legível, visualmente organizada e agradável de ler para o documento Stellar Command (Galaxy Online IV):
-🚀 Stellar Command
-Projeto: Galaxy Online IV
-Subtítulo: A nova geração da estratégia espacial
-📌 1. Visão Geral & Conceito
-O Galaxy Online IV é um jogo de estratégia espacial 3D executado diretamente no navegador. É uma releitura espiritual do clássico Galaxy Online II, reformatado com tecnologia moderna, gráficos em 3D e arquitetura expansível, mantendo o charme nostálgico dos jogos de navegador dos anos 2000/2010.
-⚠️ Importante: Trata-se de uma obra 100% nova e independente. Nenhum código, modelo 3D, áudio ou arte do jogo original será copiado.
-🎯 2. Escopo da Primeira Versão (MVP)
-O objetivo inicial não é entregar o jogo completo, mas sim um MVP (Produto Mínimo Viável) leve e funcional para testar o ciclo principal de gameplay:
-
-$$\text{Login} \longrightarrow \text{Planeta} \longrightarrow \text{Construir} \longrightarrow \text{Coletar} \longrightarrow \text{Produzir Naves} \longrightarrow \text{Frota} \longrightarrow \text{Batalha} \longrightarrow \text{Recompensa}$$
-Recursos no MVP:
-🔐 Criação de conta e autenticação segura
-🪐 Visualização do planeta inicial em 3D
-🏗️ Sistema básico de construção e produção
-👨‍✈️ Gerenciamento de comandantes e frotas
-🌌 Mapa galáctico simples e sistema de batalhas com animação
-📜 Sistema de missões com recompensas
-💾 Salvamento permanente no servidor
-📱 3. Plataformas e Compatibilidade
-O jogo roda 100% no navegador, sem necessidade de download ou instalação de aplicativo.
-Plataformas suportadas: PC / Windows, Android, iOS (iPhone/iPad).
-Interface Responsiva: Adaptação automática para monitores, notebooks, tablets e smartphones.
-🛠️ 4. Arquitetura Tecnológica
-Camada
-Tecnologia / Função
-Frontend
-React, TypeScript, WebGL/WebGPU (Three.js) para renderização 3D da HUD e mapa.
-Backend
-API para gestão de jogadores, recursos, frotas, combates e missões.
-Banco de Dados
-Armazenamento permanente do progresso (edifícios, frotas, inventário, etc.).
-
-🎨 5. Identidade Visual
-Estilo: Sci-Fi futurista, tecnológico e militar com sensação de centro de comando.
-Elementos: Painéis escuros, hologramas, mapas estelares, modelos 3D e efeitos suaves de iluminação.
-🎮 6. Sistemas Principais do Jogo
-💎 Recursos Globais
-Recurso
-Função Principal
-Metal
-Construção de edifícios e naves.
-Cristal
-Pesquisas e componentes avançados.
-Gás
-Combustível e tecnologias de propulsão.
-Energia
-Mantém a infraestrutura do planeta operando.
-
-A produção e consumo acontecem em tempo real, mesmo quando o jogador está offline.
-🏗️ Edifícios Iniciais
-Centro de Comando: Edifício principal do planeta.
-Minas & Extratores: Mina de Metal, Mina de Cristal e Extrator de Gás.
-Usina de Energia: Geradora do recurso energético.
-Estaleiro: Permite a fabricação de naves espaciais.
-🚀 Naves & Frotas (MVP)
-Caça: Rápido, leve e de baixo custo.
-Fragata: Equilibrada para ataque e defesa.
-Cruzador: Lento, porém com alto poder de fogo.
-👨‍✈️ Comandantes
-Inicialmente haverá 3 comandantes disponíveis, cada um com:
-Retrato, Nível e Experiência.
-Atributos (Ataque, Defesa, Comando, Engenharia, Exploração).
-Habilidade especial e vinculação de frota.
-🗺️ 7. Mapa Galáctico & Batalhas
-Estrutura do Mapa (MVP):
-1 Sistema Solar contendo:
-1 Planeta do Jogador
-2 Planetas Neutros
-1 Planeta Inimigo
-Combate Espacial:
-Envio da frota com comandante selecionado.
-Cálculo de combate baseado nas estatísticas de naves, atributos do comandante e bônus.
-Exibição de uma animação 3D resumida do combate.
-Tela final exibindo resultado (Vitória/Derrota), perdas, XP e saque obtido.
-🗺️ 8. Roteiro de Desenvolvimento (Roadmap)
 
 
+# 🚀 Galaxy Online IV: Stellar Command
 
-[FASE 1: MVP] ──> [FASE 2: TESTES] ──> [FASE 3: EXPANSÃO]
- (Protótipo Core)    (PC, Mobile, Perf)  (Alianças, PvP, Múltiplos Sistemas)
+**Documento de Conceito & Visão Geral**
 
+---
 
-Fase 1 (MVP): Telas de login, planeta 3D, recursos, 5 edifícios, 3 comandantes, 3 naves, combate simples, missões e salvamento.
-Fase 2 (Testes): Ajustes de responsividade em dispositivos móveis, taxa de quadros e sincronização de dados.
-Fase 3 (Expansão): Árvores de tecnologia, alianças, mercado entre jogadores, guerras PvP e múltiplos sistemas solares.
+## 1. Visão Geral do Projeto
+
+O **Galaxy Online IV (Stellar Command)** é um jogo de estratégia espacial em 3D desenvolvido para rodar diretamente no navegador. O projeto nasce como um sucessor espiritual do clássico *Galaxy Online II*, combinando o charme e a nostalgia dos jogos de web dos anos 2000/2010 com tecnologias web modernas, gráficos tridimensionais e uma arquitetura altamente expansível.
+
+> ⚠️ **Nota de Propriedade Intelectual:** Este é um projeto 100% original e independente. Toda a propriedade intelectual, modelos 3D, efeitos sonoros e código-fonte são desenvolvidos do zero, sem o uso de assets do jogo original.
+
+---
+
+## 2. Produto Mínimo Viável (MVP)
+
+O foco inicial do desenvolvimento é validar a experiência central do jogador (*core loop*) por meio de uma versão leve, estável e funcional.
+
+### O Ciclo Principal de Gameplay
+
+O fluxo contínuo de progressão do jogador é estruturado nas seguintes etapas:
+
+1. **Autenticação:** Acesso seguro à conta do jogador.
+2. **Desenvolvimento:** Visualização do planeta inicial em 3D e construção de infraestrutura.
+3. **Coleta & Produção:** Extração contínua de recursos e fabricação de naves no estaleiro.
+4. **Organização Militar:** Designação de comandantes para a criação e gestão de frotas.
+5. **Combate Espacial:** Navegação pelo mapa galáctico, engajamento em batalhas animadas e obtenção de recompensas.
+6. **Persistência:** Salvamento automático de todo o progresso no servidor.
+
+---
+
+## 3. Compatibilidade e Plataformas
+
+Projetado para ser **100% acessível via navegador**, o jogo elimina a necessidade de downloads, instalações ou lojas de aplicativos.
+
+* **Sistemas Suportados:** Windows, macOS, Linux, Android e iOS.
+* **Interface Adaptativa:** Design totalmente responsivo, ajustando layouts, HUDs e controles para monitores, notebooks, tablets e smartphones.
+
+---
+
+## 4. Arquitetura Técnica
+
+A infraestrutura foi planejada para garantir alta performance e escalabilidade:
+
+* **Frontend (Interface & 3D):** Desenvolvido em **React** e **TypeScript**, utilizando **WebGL/WebGPU (Three.js)** para renderização fluida da interface do usuário (HUD) e dos cenários 3D no navegador.
+* **Backend (Regras de Negócio):** API dedicada para gerenciar autenticação, cálculo de recursos, estado das frotas, lógica de combate e progresso de missões.
+* **Banco de Dados (Persistência):** Armazenamento seguro de contas, edifícios, frota, inventário e histórico de jogo.
+
+---
+
+## 5. Identidade Visual e Estética
+
+O visual do jogo adota o estilo **Sci-Fi Militar Futurista**. A interface faz o jogador se sentir dentro de um centro de comando espacial:
+
+* Cores escuras e sóbrias.
+* Elementos holográficos em tons neon.
+* Mapas estelares interativos.
+* Iluminação suave e modelos 3D detalhados.
+
+---
+
+## 6. Sistemas de Jogo
+
+### Economia e Recursos
+
+A economia do jogo baseia-se em quatro recursos primários. A produção e o consumo ocorrem em tempo real, mantendo a progressão mesmo quando o jogador estiver desconectado.
+
+* **Metal:** Matéria-prima essencial para a expansão de edifícios e estruturação de naves.
+* **Cristal:** Utilizado em pesquisas tecnológicas e componentes de alta precisão.
+* **Gás:** Combustível para propulsão de frotas e energização de sistemas avançados.
+* **Energia:** Mantém a infraestrutura planetária operando em capacidade máxima.
+
+### Estruturas Iniciais (Planeta)
+
+* **Centro de Comando:** O núcleo administrativo do planeta.
+* **Extratores:** Mina de Metal, Mina de Cristal e Extrator de Gás.
+* **Usina de Energia:** Fornecedora de energia para os demais edifícios.
+* **Estaleiro:** Linha de montagem para a fabricação das naves espaciais.
+
+### Frota Inicial
+
+* **Caça:** Unidade rápida e barata, ideal para reconhecimento e ataques ágeis.
+* **Fragata:** Nave intermediária com equilíbrio entre poder ofensivo e blindagem.
+* **Cruzador:** Unidade pesada, lenta, mas equipada com alto poder de destruição.
+
+### Sistema de Comandantes
+
+Liderando as frotas, o MVP contará com **3 comandantes únicos**:
+
+* **Atributos:** Ataque, Defesa, Comando, Engenharia e Exploração.
+* **Evolução:** Sistema de nível e experiência (XP).
+* **Especialização:** Habilidades passivas e ativas que alteram o desempenho das frotas em combate.
+
+---
+
+## 7. Exploração e Combate
+
+### Estrutura do Sistema Solar
+
+No MVP, o mapa galáctico conterá **1 Sistema Solar**, composto por:
+
+* **1 Planeta do Jogador** (Base Principal)
+* **2 Planetas Neutros** (Para exploração e coleta de recursos)
+* **1 Planeta Inimigo** (Para testes do sistema de combate)
+
+### Fluxo de Batalha Espacial
+
+1. **Preparação:** O jogador seleciona a composição da frota e atribui um Comandante.
+2. **Processamento:** O servidor calcula o resultado com base no poder das naves, atributos do comandante e bônus táticos.
+3. **Animação:** O navegador exibe uma representação visual em 3D da batalha.
+4. **Relatório:** Exibição do resumo final contendo resultado (*Vitória/Derrota*), baixas sofridas, experiência acumulada e recursos saqueados.
+
+---
+
+## 8. Cronograma de Desenvolvimento (Roadmap)
+
+```
+[ FASE 1: MVP ] ───────► [ FASE 2: AJUSTES ] ───────► [ FASE 3: EXPANSÃO ]
+ Core Gameplay            Desempenho & Mobile         PvP, Alianças & Galáxia
+
+```
+
+* **Fase 1 (MVP):** Autenticação, planeta 3D, ciclo de recursos, 5 edifícios, 3 comandantes, 3 classes de naves, combate básico e missões iniciais.
+* **Fase 2 (Testes & Otimização):** Ajustes de responsividade móvel, estabilização de taxa de quadros (FPS) e sincronização de dados em tempo real.
+* **Fase 3 (Expansão):** Árvores de tecnologia avançadas, sistema de alianças/guildas, mercado entre jogadores, combates PvP e expansão para múltiplos sistemas solares.
